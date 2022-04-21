@@ -1,0 +1,67 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit !important;
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a[x-apple-data-detectors="true"] {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+li {
+  list-style: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+table,
+tr,
+td {
+  vertical-align: top;
+  border-collapse: collapse;
+}
+
+.ie-container table,
+.mso-container table {
+  table-layout: fixed;
+}
+
+.mso-table-space {
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+}
+
+.mso-line-height {
+  mso-line-height-rule: exactly;
+}
+
+.mso-border-alt {
+  mso-border-alt: none;
+}
