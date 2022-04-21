@@ -10,9 +10,9 @@ Not many particularly enjoy building plain HTML/CSS email templates, and for goo
 - Stitches CSS-in-JS
 
 ## Usage
-Run `yarn start` to start up the development server in which src/App.tsx is injected into public/index.html
-Run `yarn storybook` to start up Storybook
-Run `yarn render` to run the script contained in src/render.tsx which compiles the contents of src/App.tsx and injects the resulting markup and styles into template.html to generate output.html.
+- Run `yarn start` to start up the development server in which src/App.tsx is injected into public/index.html
+- Run `yarn storybook` to start up Storybook
+- Run `yarn render` to run the script contained in src/render.tsx which compiles the contents of src/App.tsx and injects the resulting markup and styles into template.html to generate output.html.
 
 ## Folder Structure
 Atomic modules (contained in src/components/atoms) are generic modules that abstract away the nuances of HTML email building. Slight stylistic modifications will be likely necessary to achieve design requirements.
