@@ -32,7 +32,10 @@ const Template: ComponentStory<typeof ContentBlockOne> = (args) => (
 export const Basic = Template.bind({});
 Basic.args = {
   color: ButtonColorEnum.light,
-  href: "https://google.com",
+  link: {
+    href: "https://google.com",
+    text: "Button"
+  },
   size: ButtonSizeEnum.small,
   text: "Button",
   weight: ButtonWeightEnum.regular,
