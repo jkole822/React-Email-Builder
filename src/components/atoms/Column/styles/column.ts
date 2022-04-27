@@ -1,4 +1,4 @@
-import { media, styled } from "../../../../lib/theme";
+import { styled } from "../../../../lib/theme";
 import { ColumnEnum } from "../../../../lib/typescript";
 
 export const StyledColumn = styled("div", {
@@ -10,21 +10,21 @@ export const StyledColumn = styled("div", {
   variants: {
     numColumns: {
       [ColumnEnum.one]: {
-        [media.desktop]: {
+        '@desktop': {
           display: "table-cell",
           minWidth: "600px",
           width: "600px",
         },
       },
       [ColumnEnum.two]: {
-        [media.desktop]: {
+        '@desktop': {
           display: "table-cell",
           minWidth: "300px",
           width: "300px",
         },
       },
       [ColumnEnum.three]: {
-        [media.desktop]: {
+        '@desktop': {
           display: "table-cell",
           minWidth: "200px",
           width: "200px",

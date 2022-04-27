@@ -1,4 +1,4 @@
-import { styled, media } from "../../../../lib/theme";
+import { styled } from "../../../../lib/theme";
 
 export const styledRow: any = {
   overflowWrap: "break-word",
@@ -13,7 +13,7 @@ export const styledRow: any = {
 export const StyledRow = styled("div", {
   ...styledRow,
 
-  [media.desktop]: {
+  '@desktop': {
     width: "600px !important",
   },
 });

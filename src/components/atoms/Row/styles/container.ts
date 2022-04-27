@@ -1,7 +1,7 @@
-import { media, styled } from "../../../../lib/theme";
+import { styled } from "../../../../lib/theme";
 
 export const Container = styled("div", {
-  [media.mobile]: {
+  '@mobile': {
     maxWidth: "100% !important",
     padding: "0px !important",
   },

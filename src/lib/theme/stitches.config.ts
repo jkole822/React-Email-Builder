@@ -10,8 +10,8 @@ export const { css, getCssText, styled, theme } = createStitches({
   theme: {
     colors,
     fonts,
-    media,
     shadows,
   },
+  media,
   utils,
 });
