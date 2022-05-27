@@ -1,68 +1,61 @@
 // React
-import { FC, useContext } from "react";
+import { FC } from "react";
 
-// Context
-import { CommentContext } from "../../../App";
+// Components
+import { GhostCell } from "../GhostCell";
+import { Table } from "../Table";
 
-// Styled Components
-import { css } from "../../../lib/theme";
-import { Cell, Container, InnerContainer, StyledColumn, Table } from "./styles";
+// Styles
+import { defaultOuterContainerStyles } from "./styles";
 
 // Types
-import { ColumnProps } from "./Column.typescript";
-import { ColumnEnum, AlignEnum } from "../../../lib/typescript";
+import { ColumnProps } from "./types";
+import { ColumnEnum } from "../../../lib/typescript";
 
-const Column: FC<ColumnProps> = ({
-  cellAlign = AlignEnum.center,
-  cellStyles,
-  columnStyles,
-  containerStyles,
-  innerContainerStyles,
-  numColumns,
+export const Column: FC<ColumnProps> = ({
   children,
+  columnSize,
+  customColumnSize,
+  isThinColumn = false,
+  outerContainerStyles,
+  styles,
+  ...rest
 }) => {
-  const setComments = useContext(CommentContext);
-  const columnWidth =
-    numColumns === ColumnEnum.three
-      ? 200
-      : numColumns === ColumnEnum.two
-      ? 300
-      : 600;
+  const width = customColumnSize
+    ? customColumnSize
+    : isThinColumn
+    ? columnSize === ColumnEnum.oneHalf
+      ? 275
+      : columnSize === ColumnEnum.oneThird
+      ? 182
+      : columnSize === ColumnEnum.twoThirds
+      ? 362
+      : 600
+    : columnSize === ColumnEnum.oneHalf
+    ? 295
+    : columnSize === ColumnEnum.oneThird
+    ? 195
+    : columnSize === ColumnEnum.twoThirds
+    ? 395
+    : 640;
+
+  const sizeStyles = { maxWidth: width };
 
   return (
-    <>
-      {setComments &&
-        `<!--[if (mso)|(IE)]><td align="${cellAlign}" width="${columnWidth}" style="width: ${columnWidth}px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="middle"><![endif]-->
-        `}
-      <StyledColumn
-        className={css(columnStyles)()}
-        numColumns={numColumns}
-        style={columnStyles}
+    <GhostCell width={customColumnSize || width} {...rest}>
+      <div
+        style={{
+          ...defaultOuterContainerStyles,
+          ...sizeStyles,
+          ...outerContainerStyles,
+        }}
       >
-        <Container className={css(containerStyles)()} style={containerStyles}>
-          {setComments && `<!--[if (!mso)&(!IE)]><!-->`}
-          <InnerContainer
-            className={css(innerContainerStyles)()}
-            style={innerContainerStyles}
-          >
-            <Table role="presentation" width="100%">
-              <tbody>
-                <tr>
-                  <Cell align={cellAlign} style={cellStyles}>
-                    {setComments && `<!--<![endif]-->`}
-                    {children}
-                    {setComments && `<!--[if (!mso)&(!IE)]><!-->`}
-                  </Cell>
-                </tr>
-              </tbody>
-            </Table>
-          </InnerContainer>{" "}
-          {setComments && `<!--<![endif]-->`}
-        </Container>
-      </StyledColumn>
-      {setComments && `<!--[if (mso)|(IE)]></td><![endif]-->`}
-    </>
+        <Table>
+          <tr>
+            <td style={styles}>{children}</td>
+          </tr>
+        </Table>
+      </div>
+    </GhostCell>
   );
 };
-
-export default Column;

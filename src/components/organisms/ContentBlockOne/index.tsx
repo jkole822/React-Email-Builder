@@ -2,49 +2,115 @@
 import { FC } from "react";
 
 // Components
-import BgImgWithContent from "../../molecules/BgImgWithContent";
-import Button from "../../atoms/Button";
-import Content from "../../atoms/Content";
-import EmptySpace from "../../atoms/EmptySpace";
-import Text from "../../atoms/Text";
+import { Button } from "../../atoms/Button";
+import { Column } from "../../atoms/Column";
+import { GhostCell } from "../../atoms/GhostCell";
+import { GhostTable } from "../../atoms/GhostTable";
+import { MainHeadline, Paragraph } from "../../atoms/Typography";
+import { Row } from "../../atoms/Row";
+import { Spacer } from "../../atoms/Spacer";
+import { Table } from "../../atoms/Table";
 
-// Types
+// Styles
+import { colors } from "../../../lib/theme";
 import {
-  ButtonColorEnum,
-  ButtonSizeEnum,
-  ButtonWeightEnum,
-} from "../../atoms/Button/Button.typescript";
-import {
-  TextColorEnum,
-  TextWeightEnum,
-} from "../../atoms/Text/Text.typescript";
+  columnStyles,
+  innerContainerStyles,
+  imageStyles,
+  mainHeadlineStyles,
+  topParagraphStyles,
+} from "./styles";
 
-const ContentBlockOne: FC = () => (
-  <BgImgWithContent
-    imageUrl="https://cdn.templates.unlayer.com/assets/1606924485372-1.jpg"
-    msoImageHeight={400}
-    msoImageWidth={600}
-  >
-    <Content cellStyles={{ padding: "150px 10px 10px" }}>
-      <EmptySpace />
-    </Content>
-    <Content cellStyles={{ padding: "10px" }}>
-      <Text
-        color={TextColorEnum.light}
-        fontSize={44}
-        text="NEW ARRIVAL"
-        weight={TextWeightEnum.bold}
-      />
-    </Content>
-    <Content cellStyles={{ padding: "10px 10px 50px" }}>
-      <Button
-        color={ButtonColorEnum.light}
-        link={{ href: "https://google.com", text: "VIEW MORE" }}
-        size={ButtonSizeEnum.large}
-        weight={ButtonWeightEnum.bold}
-      />
-    </Content>
-  </BgImgWithContent>
-);
+export const ContentBlockOne: FC = () => {
+  const bottomButton = (
+    <>
+      <Button href="#">Open Account</Button>
+      <Spacer height={50} />
+    </>
+  );
 
-export default ContentBlockOne;
+  const bottomParagraph = (
+    <>
+      <Paragraph>
+        Thanks for trusting us with a savings account. We’ve got an idea on how
+        to make it even better:
+        <strong>
+          Premium Online Savings accounts are the future of savings with high
+          yields, no fees, and 24/7 access.
+        </strong>
+      </Paragraph>
+      <Spacer height={20} />
+    </>
+  );
+
+  const image = (
+    <>
+      <img
+        alt="alt_text"
+        //@ts-ignore
+        border="0"
+        height="313"
+        src="assets/images/circleStock.png"
+        style={imageStyles}
+        width="313"
+      />
+      <Spacer height={40} />
+    </>
+  );
+
+  const mainHeadline = (
+    <>
+      <MainHeadline styles={mainHeadlineStyles}>
+        PenFed’s Premium Online Savings.
+      </MainHeadline>
+      <Spacer height={20} />
+    </>
+  );
+
+  const topButton = (
+    <>
+      <Button href="#">Open Account</Button>
+      <Spacer height={50} />
+    </>
+  );
+
+  const topParagraph = (
+    <>
+      <Spacer height={56} />
+      <Paragraph styles={topParagraphStyles}>Why we love</Paragraph>
+      <Spacer height={5} />
+    </>
+  );
+
+  const elements = [
+    topParagraph,
+    mainHeadline,
+    topButton,
+    image,
+    bottomParagraph,
+    bottomButton,
+  ];
+
+  const renderRows = () =>
+    elements.map((element, index) => (
+      <Row
+        backgroundColor={colors.neutral100}
+        key={index}
+        innerContainerStyles={innerContainerStyles}
+      >
+        <Column isThinColumn styles={columnStyles}>
+          <GhostTable width={600}>
+            <GhostCell>{element}</GhostCell>
+          </GhostTable>
+        </Column>
+      </Row>
+    ));
+
+  return (
+    <>
+      <Spacer height={25} />
+      <Table>{renderRows()}</Table>
+      <Spacer height={25} />
+    </>
+  );
+};

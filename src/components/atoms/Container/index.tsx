@@ -1,23 +1,28 @@
 // React
-import { FC, useContext } from "react";
+import { FC } from "react";
 
-// Context
-import { CommentContext } from "../../../App";
+// Components
+import { Column } from "../Column";
+import { GhostCell } from "../GhostCell";
+import { GhostTable } from "../GhostTable";
+import { Row } from "../Row";
+import { Table } from "../Table";
 
 // Types
-import { ContainerProps } from "./Container.typescript";
+import { ContainerProps } from "./types";
 
-const Container: FC<ContainerProps> = ({ children }) => {
-  const setComments = useContext(CommentContext);
-
-  return (
-    <>
-      {setComments &&
-        `<!--[if (mso)|(IE)]><table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center"><tr><![endif]-->`}
-      {children}
-      {setComments && `<!--[if (mso)|(IE)]></tr></table><![endif]-->`}
-    </>
-  );
-};
-
-export default Container;
+export const Container: FC<ContainerProps> = ({
+  children,
+  styles,
+  ...rest
+}) => (
+  <Table styles={styles}>
+    <Row backgroundColor="transparent">
+      <Column>
+        <GhostTable width="auto">
+          <GhostCell {...rest}>{children}</GhostCell>
+        </GhostTable>
+      </Column>
+    </Row>
+  </Table>
+);

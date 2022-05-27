@@ -7,10 +7,6 @@
   line-height: inherit;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -48,6 +44,7 @@ td {
   border-collapse: collapse;
 }
 
+// MSO/IE Styles
 .ie-container table,
 .mso-container table {
   table-layout: fixed;
@@ -64,4 +61,31 @@ td {
 
 .mso-border-alt {
   mso-border-alt: none;
+}
+
+// Responsive Design
+.display-desktop {
+  display: none !important;
+}
+
+.display-mobile {
+  display: block !important;
+}
+
+.responsive-padding {
+  padding: 0 10px !important;
+}
+
+@media screen and (min-width: 600px) {
+  .display-desktop {
+    display: block !important;
+  }
+
+  .display-mobile {
+    display: none !important;
+  }
+
+  .responsive-padding {
+    padding: 0 80px !important;
+  }
 }

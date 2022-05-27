@@ -1,4 +1,3 @@
-import { globalStyles } from '../src/lib/theme'
 import "../src/index.css";
 
 export const parameters = {
@@ -12,8 +11,6 @@ export const parameters = {
 };
 
 const App = (Story) => {
-  globalStyles();
-
   return <Story />;
 };
 

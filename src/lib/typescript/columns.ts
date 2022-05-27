@@ -1,7 +1,10 @@
 export enum ColumnEnum {
-  one = "one",
-  two = "two",
-  three = "three",
+  oneThird = "oneThird",
+  twoThirds = "twoThirds",
+  oneHalf = "oneHalf",
 }
 
-export type NumColumns = ColumnEnum.one | ColumnEnum.two | ColumnEnum.three;
+export type ColumnSize =
+  | ColumnEnum.oneThird
+  | ColumnEnum.twoThirds
+  | ColumnEnum.oneHalf;
