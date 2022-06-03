@@ -5,12 +5,15 @@
   margin: 0;
   padding: 0;
   line-height: inherit;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
+html,
 body {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 a {
@@ -41,51 +44,80 @@ table,
 tr,
 td {
   vertical-align: top;
-  border-collapse: collapse;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
 }
 
-// MSO/IE Styles
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* MSO/IE Styles */
 .ie-container table,
 .mso-container table {
   table-layout: fixed;
 }
 
-.mso-table-space {
-  mso-table-lspace: 0pt;
-  mso-table-rspace: 0pt;
+table,
+tr,
+td {
+  mso-table-lspace: 0pt !important;
+  mso-table-rspace: 0pt !important;
 }
 
-.mso-line-height {
-  mso-line-height-rule: exactly;
-}
-
-.mso-border-alt {
-  mso-border-alt: none;
-}
-
-// Responsive Design
-.display-desktop {
-  display: none !important;
-}
-
-.display-mobile {
-  display: block !important;
-}
-
-.responsive-padding {
-  padding: 0 10px !important;
-}
-
-@media screen and (min-width: 600px) {
-  .display-desktop {
-    display: block !important;
-  }
-
-  .display-mobile {
+/* Responsive Design */
+@media (max-width: 599px) {
+  .display-block-desktop,
+  .display-inline-block-desktop,
+  .display-table-desktop,
+  .display-row-desktop,
+  .display-cell-desktop {
     display: none !important;
   }
 
-  .responsive-padding {
-    padding: 0 80px !important;
+  .display-block-mobile {
+    display: block !important;
+  }
+
+  .display-inline-block-mobile {
+    display: inline-block !important;
+  }
+
+  .display-table-mobile {
+    display: table !important;
+  }
+
+  .display-table-mobile {
+    display: table-row !important;
+  }
+
+  .display-cell-mobile {
+    display: table-cell !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .display-block-desktop {
+    display: block !important;
+  }
+
+  .display-inline-block-desktop {
+    display: inline-block !important;
+  }
+
+  .display-table-desktop {
+    display: table !important;
+  }
+
+  .display-cell-desktop {
+    display: table-cell !important;
+  }
+
+  .display-block-mobile,
+  .display-inline-block-mobile,
+  .display-row-mobile,
+  .display-table-mobile,
+  .display-cell-mobile {
+    display: none !important;
   }
 }

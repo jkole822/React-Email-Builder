@@ -48,7 +48,7 @@ export const Card: FC<CardProps> = ({
         <Paragraph styles={paragraphStyles}>{copy}</Paragraph>
         {displaySpacer && (
           <HiddenMSO>
-            <Spacer className="display-mobile" height={40} />
+            <Spacer className="display-block-mobile" height={40} />
           </HiddenMSO>
         )}
       </GhostCell>
